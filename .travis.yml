@@ -31,14 +31,17 @@ script:
 
   # - do your other automated tests here!
 
-   - if [ "$TRAVIS_BRANCH" = master ]; then
-         echo "Yep, it's master!"     
-       fi;
 
    - if [ "$TRAVIS_BRANCH" = foobar ]; then
          echo "Nah, not master!"     
+         exit 0;     
        fi;
 
+   - if [ "$TRAVIS_BRANCH" = master ]; then
+         echo "Yep, it's master!";
+         exit 0;     
+       fi;
+       
 after_script:
   - echo ran script
 after_success:
@@ -48,7 +51,7 @@ after_success:
   - echo Welp, that's another happy CI deploy!
   - echo "this is the branch $TRAVIS_BRANCH"
 
-  - 
+  
 
 # deploy:
 #   provider: pages
@@ -59,13 +62,13 @@ after_success:
 #   on:
 #     branch: v1.0.1-release
 
-# matrix:
-#   fast_finish: true
+matrix:
+  fast_finish: true
 
-# cache:
-#   # Caches $HOME/.npm when npm ci is default script command
-#   # Caches node_modules in all other cases
-#   npm: true
-#   directories:
-#     # we also need to cache folder with Cypress binary
-#     - ~/.cache
+cache:
+  # Caches $HOME/.npm when npm ci is default script command
+  # Caches node_modules in all other cases
+  npm: true
+  directories:
+    # we also need to cache folder with Cypress binary
+    - ~/.cache
