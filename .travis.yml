@@ -33,12 +33,17 @@ script:
 
 
    - if [ "$TRAVIS_BRANCH" = foobar ]; then
-         echo "Nah, not master!"     
+         echo "Nah, it's foobar!"     
          exit 0;     
        fi;
 
    - if [ "$TRAVIS_BRANCH" = master ]; then
          echo "Yep, it's master!";
+         exit 0;     
+       fi;
+
+   - if [ "$TRAVIS_BRANCH" = staging ]; then
+         echo "It's staging!";
          exit 0;     
        fi;
 after_script:
