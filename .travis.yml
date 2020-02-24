@@ -29,7 +29,15 @@ script:
 
    - npm test
 
-# - do your other automated tests here!
+  # - do your other automated tests here!
+
+   - if [ "$TRAVIS_BRANCH" = master ]; then
+         echo "Yep, it's master!"     
+       fi;
+
+   - if [ "$TRAVIS_BRANCH" = foobar ]; then
+         echo "Nah, not master!"     
+       fi;
 
 after_script:
   - echo ran script
@@ -38,7 +46,9 @@ after_success:
 
   # - do your deploy commands here!
   - echo Welp, that's another happy CI deploy!
-  - echo 'this is the branch $TRAVIS_BRANCH'
+  - echo "this is the branch $TRAVIS_BRANCH"
+
+  - 
 
 # deploy:
 #   provider: pages
