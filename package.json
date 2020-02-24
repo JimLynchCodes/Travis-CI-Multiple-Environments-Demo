@@ -1,0 +1,22 @@
+{
+  "name": "travis-ci-multiple-environments-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.test.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JimLynchCodes/Travis-CI-Multiple-Environments-Demo.git"
+  },
+  "author": "JimTheMan <mrdotjim@gmail.com> (http://www.wisdomofjim.com)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/JimLynchCodes/Travis-CI-Multiple-Environments-Demo/issues"
+  },
+  "homepage": "https://github.com/JimLynchCodes/Travis-CI-Multiple-Environments-Demo#readme",
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
+}
