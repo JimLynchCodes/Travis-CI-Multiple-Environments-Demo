@@ -32,24 +32,43 @@ script:
   # - do your other automated tests here!
 
 
-   - if [ "$TRAVIS_BRANCH" = foobar ]; then
-         echo "Nah, it's foobar!"     
-         exit 0;     
-       fi;
-
-   - if [ "$TRAVIS_BRANCH" = master ]; then
-         echo "Yep, it's master!";
-         exit 0;     
-       fi;
-
-   - if [ "$TRAVIS_BRANCH" = staging ]; then
-         echo "It's staging!";
-         exit 0;     
-       fi;
 after_script:
   - echo ran script
 after_success:
-  # - npm run build
+
+  - if [ "$TRAVIS_PULL_REQUEST" ]; then
+        echo "not deploying, it's just a pull request build!";
+        echo TRAVIS_PULL_REQUEST_BRANCH - $TRAVIS_PULL_REQUEST_BRANCH;
+        echo TRAVIS_PULL_REQUEST - $TRAVIS_PULL_REQUEST;
+        echo TRAVIS_BRANCH - $TRAVIS_BRANCH;
+        exit 0;
+      fi;
+
+  - if [ "$TRAVIS_BRANCH" = dev ]; then
+        echo TRAVIS_PULL_REQUEST_BRANCH - $TRAVIS_PULL_REQUEST_BRANCH;
+        echo TRAVIS_PULL_REQUEST - $TRAVIS_PULL_REQUEST;
+        echo TRAVIS_BRANCH - $TRAVIS_BRANCH;
+        echo "It's a push or PR to dev! Let's deploy to the dev environment!";
+        exit 0;     
+      fi;
+      
+  - if [ "$TRAVIS_BRANCH" = staging ]; then
+        echo TRAVIS_PULL_REQUEST_BRANCH - $TRAVIS_PULL_REQUEST_BRANCH;
+        echo TRAVIS_PULL_REQUEST - $TRAVIS_PULL_REQUEST;
+        echo TRAVIS_BRANCH - $TRAVIS_BRANCH;
+        echo "It's a push or PR to staging! Let's deploy to the staging environment!";
+        exit 0;     
+      fi;
+
+  - if [ "$TRAVIS_BRANCH" = master ]; then
+        echo TRAVIS_PULL_REQUEST_BRANCH - $TRAVIS_PULL_REQUEST_BRANCH;
+        echo TRAVIS_PULL_REQUEST - $TRAVIS_PULL_REQUEST;
+        echo TRAVIS_BRANCH - $TRAVIS_BRANCH;
+        echo "It's a push or PR to master! Let's deploy to the master environment!";
+        exit 0;     
+      fi;
+
+      
 
   # - do your deploy commands here!
   - echo Welp, that's another happy CI deploy!
