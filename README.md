@@ -22,3 +22,8 @@ With branch-based environments we have a branch for each environment, and to kee
 
    ^ Having these 2 automatic builds and test runs is a great time saver for any code review process! 
 
+# Platform / Language Agnostic
+This project demonstrates how to use TravisCi for a NodeJS project, but Travis supports loads of other languages so this 3-environment CI/CD pattern can be applied to all sorts of projects! Even if you decide to go with another CI platform other than Travis, you can take the mentality and ability to leverage the results of the tests and builds at various points throughout the deployment process and rollout of features across envvironments in an organized and efficient fashion. 
+
+# Contributing
+I'd love to hear your thoughts and suggestions on this project! Feel free to open issues or PR's, and I'll respond as soon as I can. Thanks! ❤️ 
