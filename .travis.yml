@@ -36,7 +36,7 @@ after_script:
   - echo ran script
 after_success:
 
-  - if [ "$TRAVIS_PULL_REQUEST" ]; then
+  - if [ "$TRAVIS_PULL_REQUEST" = true ]; then
         echo "not deploying, it's just a pull request build!";
         echo TRAVIS_PULL_REQUEST_BRANCH - $TRAVIS_PULL_REQUEST_BRANCH;
         echo TRAVIS_PULL_REQUEST - $TRAVIS_PULL_REQUEST;
